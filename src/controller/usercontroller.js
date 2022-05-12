@@ -71,37 +71,37 @@ const createuser = async function (req, res) {
         }
 
         if (!isValid(requestBody.password)) {
-            res.status(400).send({ status: false, message: 'password is required' })
-            return
+            return res.status(400).send({ status: false, message: 'password is required' })
+            
         }
 
         if (requestBody.address) {
             if (!isValid(requestBody.address.street)) {
-                res.status(400).send({ status: false, message: 'street is required' })
-                return
+                return res.status(400).send({ status: false, message: 'street is required' })
+                
             }
 
             if (!isValid(requestBody.address.city)) {
-                res.status(400).send({ status: false, message: 'city is required' })
-                return
+                return res.status(400).send({ status: false, message: 'city is required' })
+                
             }
 
             if (!isValid(requestBody.address.pincode)) {
-                res.status(400).send({ status: false, message: 'pincode is required' })
-                return
+                return res.status(400).send({ status: false, message: 'pincode is required' })
+                
             }
 
             if (Object.keys(requestBody.address).length === 0) {
-                res.status(400).send({ status: false, message: 'address cant be empty' })
-                return
+                return res.status(400).send({ status: false, message: 'address cant be empty' })
+                
             }
         }
 
         // number minimum and maximum check validation
 
         if (!(requestBody.password.length >= 8 && requestBody.password.length <= 15)) {
-            res.status(400).send({ status: false, message: 'password length should be greter then 8 and less than 15' })
-            return
+            return res.status(400).send({ status: false, message: 'password length should be greter then 8 and less than 15' })
+            
         }
 
         //  correct formate validation  number and email check email or number is valid or not 
@@ -120,8 +120,8 @@ const createuser = async function (req, res) {
         const isphoneAlreadyUsed = await userModels.findOne({ phone: requestBody.phone });
 
         if (isphoneAlreadyUsed) {
-            res.status(400).send({ status: false, message: `${requestBody.phone} phone no. is already registered` })
-            return
+            return res.status(400).send({ status: false, message: `${requestBody.phone} phone no. is already registered` })
+            
         }
 
 
@@ -129,8 +129,8 @@ const createuser = async function (req, res) {
         const isEmailAlreadyUsed = await userModels.findOne({ email: requestBody.email }); 
 
         if (isEmailAlreadyUsed) {
-            res.status(400).send({ status: false, message: `${requestBody.email} email is already registered` }) 
-            return
+            return res.status(400).send({ status: false, message: `${requestBody.email} email is already registered` }) 
+           
         }
 
 

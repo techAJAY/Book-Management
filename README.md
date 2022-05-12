@@ -81,7 +81,6 @@ POST /login
 # Books API
 
 POST /books
-
 * Create a book document from request body. Get userId in request body only.
 * Make sure the userId is a valid userId by checking the user exist in the users collection.
 * Return HTTP status 201 on a succesful book creation. Also return the book document. The response should be a JSON object like this
@@ -101,9 +100,8 @@ If no documents are found then return an HTTP status 404 with a response like th
 
     
 GET /books/:bookId
-
 * Returns a book with complete details including reviews. Reviews array would be in the form of Array. Response example here
-*Return the HTTP status 200 if any documents are found. The response structure should be like this
+* Return the HTTP status 200 if any documents are found. The response structure should be like this
 * If the book has no reviews then the response body should include book detail as shown here and an empty array for reviewsData.
 * If no documents are found then return an HTTP status 404 with a response like this
 
@@ -122,17 +120,17 @@ PUT /books/:bookId
 
 DELETE /books/:bookId
 * Check if the bookId exists and is not deleted. If it does, mark it deleted and return an HTTP status 200 with a response body with status and message.
-*If the book document doesn't exist then return an HTTP status of 404 with a body like this
+* If the book document doesn't exist then return an HTTP status of 404 with a body like this
 
 
-Review APIs
+# Review APIs
+
 POST /books/:bookId/review
-
 * Add a review for the book in reviews collection.
-*Check if the bookId exists and is not deleted before adding the review. Send an error response with appropirate status code like this if the book does not exist
-*Get review details like review, rating, reviewer's name in request body.
-*Update the related book document by increasing its review count
-*Return the updated book document with reviews data on successful operation. The response body should be in the form of JSON object like this
+* Check if the bookId exists and is not deleted before adding the review. Send an error response with appropirate status code like this if the book does not exist
+* Get review details like review, rating, reviewer's name in request body.
+* Update the related book document by increasing its review count
+* Return the updated book document with reviews data on successful operation. The response body should be in the form of JSON object like this
 
 
 PUT /books/:bookId/review/:reviewId
